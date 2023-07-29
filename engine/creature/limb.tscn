@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://daapj1hdpwhhu"]
+
+[ext_resource type="PackedScene" uid="uid://jmso3taa6h1d" path="res://engine/creature/branch.tscn" id="1_dwe63"]
+
+[node name="Limb" type="Node2D"]
+
+[node name="Branch" parent="." instance=ExtResource("1_dwe63")]
+
+[node name="Branch2" parent="." instance=ExtResource("1_dwe63")]
+position = Vector2(129, 0)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(64, -1)
+node_a = NodePath("../Branch")
+node_b = NodePath("../Branch2")

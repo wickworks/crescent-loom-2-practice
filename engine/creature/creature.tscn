@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://ciwlyboo8314n"]
+
+[ext_resource type="PackedScene" uid="uid://jmso3taa6h1d" path="res://engine/creature/branch.tscn" id="1_6ixv5"]
+[ext_resource type="Script" path="res://engine/creature/creature.gd" id="1_iqy5n"]
+[ext_resource type="PackedScene" uid="uid://btba0634wuvb0" path="res://engine/brain/neuron.tscn" id="3_tapsh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4fe7"]
+
+[node name="Creature" type="Node2D"]
+script = ExtResource("1_iqy5n")
+
+[node name="Skull" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skull"]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_q4fe7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-40, 40)
+node_a = NodePath("../Skull")
+node_b = NodePath("../Branch")
+disable_collision = false
+
+[node name="Branch" parent="." instance=ExtResource("1_6ixv5")]
+position = Vector2(-112, 66)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(30, 39)
+node_a = NodePath("../Skull")
+node_b = NodePath("../Branch2")
+disable_collision = false
+
+[node name="Branch2" parent="." instance=ExtResource("1_6ixv5")]
+position = Vector2(107, 66)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2(1, -57)
+node_a = NodePath("../Skull")
+node_b = NodePath("../Branch3")
+disable_collision = false
+
+[node name="Branch3" parent="." instance=ExtResource("1_6ixv5")]
+position = Vector2(0, -137)
+rotation = -1.58635
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="."]
+position = Vector2(-35, -198)
+rotation = 0.53155
+node_a = NodePath("../Branch")
+node_b = NodePath("../Branch3")
+disable_collision = false
+length = 500.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="."]
+position = Vector2(24, -200)
+rotation = -0.550696
+node_a = NodePath("../Branch2")
+node_b = NodePath("../Branch3")
+disable_collision = false
+length = 500.0
+
+[node name="Brain" type="Node" parent="."]
+
+[node name="Neuron" parent="Brain" node_paths=PackedStringArray("muscle") instance=ExtResource("3_tapsh")]
+muscle = NodePath("../../DampedSpringJoint2D")
+
+[node name="Neuron2" parent="Brain" node_paths=PackedStringArray("muscle") instance=ExtResource("3_tapsh")]
+muscle = NodePath("../../DampedSpringJoint2D2")
+is_active = true
