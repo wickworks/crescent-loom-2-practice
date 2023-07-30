@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://jmso3taa6h1d"]
+[gd_scene load_steps=4 format=3 uid="uid://jmso3taa6h1d"]
+
+[ext_resource type="Script" path="res://engine/creature/branch.gd" id="1_vh3f5"]
+[ext_resource type="PackedScene" uid="uid://b23adwma3tx8j" path="res://engine/creature/attachment_point.tscn" id="2_brpom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cjyw"]
-size = Vector2(144, 56)
+size = Vector2(288, 20)
 
 [node name="Branch" type="RigidBody2D"]
 can_sleep = false
+script = ExtResource("1_vh3f5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7cjyw")
+
+[node name="AttachmentPoint" parent="." instance=ExtResource("2_brpom")]
+position = Vector2(128, -3)

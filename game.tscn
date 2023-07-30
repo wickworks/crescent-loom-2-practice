@@ -1,18 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgaw6e7ks8wc6"]
+[gd_scene load_steps=5 format=3 uid="uid://cgaw6e7ks8wc6"]
 
 [ext_resource type="PackedScene" uid="uid://ciwlyboo8314n" path="res://engine/creature/creature.tscn" id="1_w3eul"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a6jj3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aar3l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0h5ob"]
+radius = 41.27
 
 [node name="Game" type="Node2D"]
 
 [node name="Creature" parent="." instance=ExtResource("1_w3eul")]
 position = Vector2(-10, -130)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Creature"]
+position = Vector2(10, 130)
+zoom = Vector2(0.4, 0.4)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 shape = SubResource("WorldBoundaryShape2D_a6jj3")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(151, 106)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_aar3l")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D"]
+position = Vector2(72, 59)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D/RigidBody2D"]
+shape = SubResource("CircleShape2D_0h5ob")

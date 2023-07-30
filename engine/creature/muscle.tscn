@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx0p8m0upcu3o"]
+
+[ext_resource type="Script" path="res://engine/creature/muscle.gd" id="1_kg1ju"]
+
+[node name="Muscle" type="DampedSpringJoint2D"]
+disable_collision = false
+stiffness = 5.0
+damping = 0.01
+script = ExtResource("1_kg1ju")
