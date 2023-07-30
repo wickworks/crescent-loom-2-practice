@@ -18,6 +18,24 @@ position = Vector2(-10, -130)
 position = Vector2(10, 130)
 zoom = Vector2(0.4, 0.4)
 
+[node name="Creature2" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(-247, -49)
+
+[node name="Creature3" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(155, -205)
+
+[node name="Creature4" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(-230, 103)
+
+[node name="Creature5" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(411, -262)
+
+[node name="Creature6" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(-264, -285)
+
+[node name="Creature7" parent="." instance=ExtResource("1_w3eul")]
+position = Vector2(294, 17)
+
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(0, 300)
 
